@@ -19,6 +19,18 @@ int b2d(string b, int i=0){
     return ((b[i] - '0') << (n-i-1))  +
             b2d(b, i+1);
 }
+
+// Decimal to octal conversion
+int d2o(int d){
+    int r, i = 1, o = 0;
+    while (d != 0){
+        r = d % 8;
+        d /= 8;
+        o += r * i;
+        i *= 10;
+    }
+    return o;
+}
  
 int main()
 {
@@ -40,6 +52,13 @@ int main()
         cout << "Enter a binary number: ";
         cin >> b;
         cout << "The decimal value of " << b << " is " << b2d(to_string(b));
+    }
+
+    else if(inp=="d" && out=="o"){
+        int d;
+        cout << "Enter a decimal number: ";
+        cin >> d;
+        cout << "The octal value of " << d << " is " << d2o(d);
     }
     
     return 0;
